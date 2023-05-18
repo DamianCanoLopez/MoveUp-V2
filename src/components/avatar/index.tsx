@@ -1,7 +1,14 @@
 import styles from "./styles.module.scss";
 
+interface Props {
+  nameProp: string;
+  lastNameProp: string;
+}
+
 export default function Avatar(props) {
   return (
+    console.log(props);
+    
     <span
       className={`${styles.container} fs-3 d-flex justify-content-center align-items-cente`}
     >
