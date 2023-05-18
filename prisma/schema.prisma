@@ -30,8 +30,8 @@ model Imagenes{
   url String @db.VarChar(255)
   nombre String @db.VarChar(255)
   descripcion String @db.VarChar(255)
-  productoId Int @db.Int
-  productos Productos @relation(fields: [productoId], references: [id])
+  productoId Int? @db.Int 
+  productos Productos? @relation(fields: [productoId], references: [id])
 
   @@index([productoId])
 }
@@ -58,8 +58,8 @@ model Reservas{
   horaInicio DateTime @updatedAt
   fechaInicio DateTime @updatedAt
   fechafinal DateTime @updatedAt
-  productoId Int @db.Int
-  productos Productos @relation(fields: [productoId], references: [id])
+  productoId Int? @db.Int
+  productos Productos? @relation(fields: [productoId], references: [id])
 
   @@index([productoId])
 }
