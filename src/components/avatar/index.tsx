@@ -1,19 +1,17 @@
 import styles from "./styles.module.scss";
 
 interface Props {
-  nameProp: string;
-  lastNameProp: string;
+  nameProp: string | undefined;
+  lastNameProp: string | undefined;
 }
 
-export default function Avatar(props) {
+export default function Avatar({ nameProp, lastNameProp }: Props | undefined) {
   return (
-    console.log(props);
-    
     <span
       className={`${styles.container} fs-3 d-flex justify-content-center align-items-cente`}
     >
-      {props.nameProp.at(0).toUpperCase()}
-      {props.lastNameProp.at(0).toUpperCase()}
+      {nameProp.at(0).toUpperCase()}
+      {lastNameProp.at(0).toUpperCase()}
     </span>
   );
 }
