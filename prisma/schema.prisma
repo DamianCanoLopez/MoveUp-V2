@@ -1,0 +1,65 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+datasource db {
+  provider = "mysql"
+  url = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model Categorias{
+  id Int @id @default(autoincrement())
+  nombreCategoria String @db.VarChar(255)
+  descripcionCategorias String @db.VarChar(255)
+  url String @db.VarChar(255)
+  productos Productos[]
+}
+
+model Ciudades{
+  id Int @id @default(autoincrement())
+  nombreCiudad String @db.VarChar(255)
+  url String @db.VarChar(255)
+  productos Productos[]
+}
+
+model Imagenes{
+  id Int @id @default(autoincrement())
+  url String @db.VarChar(255)
+  nombre String @db.VarChar(255)
+  descripcion String @db.VarChar(255)
+  productoId Int @db.Int
+  productos Productos @relation(fields: [productoId], references: [id])
+
+  @@index([productoId])
+}
+
+model Productos{
+  id Int @id @default(autoincrement())
+  calificacion Decimal @db.Decimal()
+  nombreClase String @db.VarChar(255)
+  direccion String @db.VarChar(255)
+  descripcionClase String @db.VarChar(255)
+  ciudadId Int @db.Int
+  categoriaId Int @db.Int
+  ciudad Ciudades @relation(fields: [ciudadId], references: [id])
+  imagenes Imagenes[]
+  reservas Reservas[]
+  categoria Categorias @relation(fields: [categoriaId], references: [id])
+
+  @@index([ciudadId])
+  @@index([categoriaId])
+}
+
+model Reservas{
+  id Int @id @default(autoincrement())
+  horaInicio DateTime @updatedAt
+  fechaInicio DateTime @updatedAt
+  fechafinal DateTime @updatedAt
+  productoId Int @db.Int
+  productos Productos @relation(fields: [productoId], references: [id])
+
+  @@index([productoId])
+}
