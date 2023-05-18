@@ -1,0 +1,50 @@
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+@import "../../../node_modules/bootstrap-icons/font/bootstrap-icons.css";
+@import "./colors";
+@import "./buttons";
+@import "./text";
+@import "./background";
+@import "./cards";
+
+/* Typigrafia */
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
+
+body {
+  --bs-link-color: var(--primary);
+  --bs-link-hover-color: var(--primary-dark);
+  --bs-primary-rgb: rgba(240, 87, 45, 1);
+
+  font-family: var(--bs-body-font-family) !important;
+}
+
+.list-width {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+  gap: 1rem;
+
+  @media screen and (max-width: 540px) {
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  }
+}
+
+.object-fit-cover {
+  object-fit: cover;
+}
+
+.width-max-content {
+  width: max-content;
+}
+
+.booking__height-image {
+  @include media-breakpoint-up(xl) {
+    max-height: 403px;
+  }
+}
+
+.min-width-theme {
+  width: 30px;
+}
+
+.dark-select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+}
