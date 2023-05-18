@@ -5,7 +5,7 @@ interface Props {
   lastNameProp: string | undefined;
 }
 
-export default function Avatar({ nameProp, lastNameProp }: Props | undefined) {
+export default function Avatar({ nameProp, lastNameProp }: Props) {
   return (
     <span
       className={`${styles.container} fs-3 d-flex justify-content-center align-items-cente`}
