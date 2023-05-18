@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { geCities } from "../api/city";
-import { CalendarWithInput } from "./calendar";
+// import { geCities } from "../api/city";
+// import { CalendarWithInput } from "./calendar";
 import SELECT from "./common/select";
 
 export default function Searcher({ onSearch }) {
@@ -11,11 +11,11 @@ export default function Searcher({ onSearch }) {
     end: "",
   });
 
-  useEffect(() => {
-    geCities().then((data) => {
-      setDataCities(data);
-    });
-  }, []);
+  // useEffect(() => {
+  //   geCities().then((data) => {
+  //     setDataCities(data);
+  //   });
+  // }, []);
 
   const cities = dataCities?.map((city) => {
     return (
@@ -56,7 +56,7 @@ export default function Searcher({ onSearch }) {
                 </SELECT>
               </div>
               <div className="col-sm-12 col-md-4">
-                <CalendarWithInput dates={dates} setDates={setDates} />
+                {/* <CalendarWithInput dates={dates} setDates={setDates} /> */}
               </div>
               <div className="d-flex col-12 col-md-2">
                 <button type="submit" className="btn btn-primary w-100">

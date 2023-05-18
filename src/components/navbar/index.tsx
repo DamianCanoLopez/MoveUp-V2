@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import Avatar from "../avatar";
 import UserContext from "../../context/user-context";
 import ThemeContext from "../../context/context-theme";

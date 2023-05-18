@@ -2,17 +2,17 @@ import { useEffect, useState } from "react";
 import Card from "../components/common/card";
 import P from "../components/common/p";
 import H5 from "../components/common/h5";
-import { getCategories } from "../api/categories";
-import { getClassByCategory } from "../api/products";
+// import { getCategories } from "../api/categories";
+// import { getClassByCategory } from "../api/products";
 
 export default function Categories({ onClickCategory }) {
   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    getCategories().then((data) => {
-      setData(data);
-    });
-  }, []);
+  // useEffect(() => {
+  //   getCategories().then((data) => {
+  //     setData(data);
+  //   });
+  // }, []);
 
   const eachCategory = data.map((category) => {
     return (

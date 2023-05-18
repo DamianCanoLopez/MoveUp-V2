@@ -1,13 +1,13 @@
 import { useEffect, useState, useContext } from "react";
-import { format, isValid } from "date-fns";
-import Categories from "../components/categories";
-import List from "../components/list";
+// import { format, isValid } from "date-fns";
+// import Categories from "../components/categories";
+// import List from "../components/list";
 import Searcher from "../components/searcher";
-import {
-  getClasses,
-  getRecommended,
-  getFilteredClasses,
-} from "../api/products";
+// import {
+//   getClasses,
+//   getRecommended,
+//   getFilteredClasses,
+// } from "../api/products";
 import UserContext from "../context/user-context";
 import P from "../components/common/p";
 
@@ -16,21 +16,21 @@ export default function Main() {
   const [data, setData] = useState([]);
   const [title, setTitle] = useState("");
 
-  const userIsLog = Boolean(userState.user);
+  // const userIsLog = Boolean(userState.user);
 
-  useEffect(() => {
-    if (userIsLog) {
-      getClasses().then((data) => {
-        setData(data);
-        setTitle("Clases");
-      });
-    } else {
-      getRecommended().then((data) => {
-        setData(data);
-        setTitle("Recomendados");
-      });
-    }
-  }, [userIsLog]);
+  // useEffect(() => {
+  //   if (userIsLog) {
+  //     getClasses().then((data) => {
+  //       setData(data);
+  //       setTitle("Clases");
+  //     });
+  //   } else {
+  //     getRecommended().then((data) => {
+  //       setData(data);
+  //       setTitle("Recomendados");
+  //     });
+  //   }
+  // }, [userIsLog]);
 
   return (
     <div className="min-vh-100">
@@ -51,15 +51,15 @@ export default function Main() {
           setTitle("Resultado de la búsqueda:");
         }}
       />
-      <Categories
+      {/* <Categories
         onClickCategory={(data, categoryName) => {
           setData(data);
           setTitle("Filtrado por categoría: " + categoryName);
         }}
-      />
+      /> */}
       <div className="container mt-4">
         <P className="fs-4 fw-bold mb-2">{title}</P>
-        <List data={data} />
+        {/* <List data={data} /> */}
       </div>
     </div>
   );
