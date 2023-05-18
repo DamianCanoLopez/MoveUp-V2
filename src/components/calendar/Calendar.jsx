@@ -3,17 +3,19 @@ import theme from "./styles";
 import { ChakraProvider } from "@chakra-ui/react";
 import useWindowResize from "./useWindowResize";
 import ThemeContext from "../../context/context-theme";
-import {
-  Calendar,
-  CalendarControls,
-  CalendarPrevButton,
-  CalendarNextButton,
-  CalendarMonth,
-  CalendarMonths,
-  CalendarMonthName,
-  CalendarWeek,
-  CalendarDays,
-} from "@uselessdev/datepicker";
+import { Calendar } from "@uselessdev/datepiker";
+
+// import {
+//   Calendar,
+//   CalendarControls,
+//   CalendarPrevButton,
+//   CalendarNextButton,
+//   CalendarMonth,
+//   CalendarMonths,
+//   CalendarMonthName,
+//   CalendarWeek,
+//   CalendarDays,
+// } from "@uselessdev/datepicker";
 import Reset from "./reset";
 
 const CalendarNoInput = ({ months = 2, dates, setDates, disabledDates }) => {

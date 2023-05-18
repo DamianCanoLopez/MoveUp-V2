@@ -1,4 +1,3 @@
-// import ThemeContext from "../../context/context-theme";
 import ThemeContext from "@/context/context-theme";
 import { useContext } from "react";
 
