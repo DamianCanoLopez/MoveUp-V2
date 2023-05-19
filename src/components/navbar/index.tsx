@@ -52,7 +52,7 @@ export default function Navbar() {
               />
               <button
                 className={`bi min-width-theme btn border-0 text-white ${
-                  themeState.theme
+                  themeState?.theme
                     ? "bi-cloud-sun-fill fs-3"
                     : "bi-cloud-moon-fill fs-3"
                 }`}

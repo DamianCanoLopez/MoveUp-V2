@@ -1,5 +1,12 @@
 import { createContext, useState } from "react";
 
+interface ThemeContextType {
+  theme: boolean;
+  setTheme?: any;
+}
+
+// type ThemeContextType = true | false;
+
 const ThemeContext = createContext<any>(false);
 
 interface Props {
@@ -7,7 +14,7 @@ interface Props {
 }
 
 export const ThemeProvider = ({ children }: Props) => {
-  const [theme, setTheme] = useState(false);
+  const [theme, setTheme] = useState<ThemeContextType>();
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
