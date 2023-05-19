@@ -1,13 +1,17 @@
 import { createContext, useState } from "react";
 
-const ThemeContext = createContext();
+const ThemeContext = createContext<any>(false);
 
-export const ThemeProvider = (props) => {
+interface Props {
+  children: JSX.Element;
+}
+
+export const ThemeProvider = ({ children }: Props) => {
   const [theme, setTheme] = useState(false);
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
-      {props.children}
+      {children}
     </ThemeContext.Provider>
   );
 };

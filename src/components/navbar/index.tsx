@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import Link from "next/link";
 // import { Link } from "react-router-dom";
-// import Avatar from "../avatar";
+import Avatar from "../avatar";
 import UserContext from "../../context/user-context";
-// import ThemeContext from "../../context/context-theme";
+import ThemeContext from "../../context/context-theme";
 import ButtonLink from "../button-link";
 // import SPAN from "../common/span";
 
@@ -11,7 +11,7 @@ import styles from "./styles.module.scss";
 
 export default function Navbar() {
   const userState = useContext(UserContext);
-  // const themeState = useContext(ThemeContext);
+  const themeState = useContext(ThemeContext);
 
   return (
     <nav className="navbar navbar-dark navbar-expand-md bg-primary">
@@ -71,8 +71,8 @@ export default function Navbar() {
               )}
               <div className="d-flex column align-items-center">
                 <Avatar
-                  nameProp={userState.user.name}
-                  lastNameProp={userState.user.lastName}
+                  nameProp={userState?.user?.name}
+                  lastNameProp={userState?.user?.lastName}
                 />
               </div>
               <div className="nav-item dropdown">
