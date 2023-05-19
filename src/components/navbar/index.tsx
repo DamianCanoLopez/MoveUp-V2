@@ -1,12 +1,10 @@
 import { useContext } from "react";
 import Link from "next/link";
-// import { Link } from "react-router-dom";
 import Avatar from "../avatar";
 import UserContext from "../../context/user-context";
 import ThemeContext from "../../context/context-theme";
 import ButtonLink from "../button-link";
-// import SPAN from "../common/span";
-
+import SPAN from "../common/span";
 import styles from "./styles.module.scss";
 
 export default function Navbar() {
@@ -40,7 +38,7 @@ export default function Navbar() {
           className="collapse navbar-collapse grid gap-4 justify-content-end"
           id="navbarSupportedContent"
         >
-          {!userState.user && (
+          {!userState?.user && (
             <>
               <ButtonLink
                 to="/signup"
@@ -64,7 +62,7 @@ export default function Navbar() {
               />
             </>
           )}
-          {userState.user && (
+          {userState?.user && (
             <div className="container d-flex justify-content-end gap-2 align-items-center">
               {userState.user.role === "ROLE_ADMIN" && (
                 <span className="text-white fs-4 me-3">Administrador</span>
@@ -90,7 +88,7 @@ export default function Navbar() {
                 <ul className="dropdown-menu">
                   {userState.user.role === "ROLE_ADMIN" && (
                     <li>
-                      <Link className="dropdown-item" to="/administrator">
+                      <Link className="dropdown-item" href="/administrator">
                         <i className="bi me-2 bi-file-earmark-plus-fill fs-5 text-primary" />
                         Crear producto
                       </Link>
@@ -100,7 +98,7 @@ export default function Navbar() {
                   <li>
                     <Link
                       className="dropdown-item"
-                      to={`/${userState.user.id}/bookings`}
+                      href={`/${userState.user.id}/bookings`}
                     >
                       <i className="bi me-2 bi-calendar2-event-fill fs-5 text-primary" />
                       Mis reservas
@@ -146,7 +144,7 @@ export default function Navbar() {
         <div
           className="modal fade"
           id="navbarMenu"
-          tabIndex="-1"
+          // tabIndex="-1"
           aria-hidden="true"
         >
           <div className="modal-dialog modal-fullscreen">
@@ -165,11 +163,11 @@ export default function Navbar() {
                   />
                 </div>
                 <div className="w-100 d-flex flex-column align-items-end">
-                  {!userState.user && (
+                  {!userState?.user && (
                     <h2 className="text-white h2 m-0 fw-bold">MENÚ</h2>
                   )}
 
-                  {userState.user && (
+                  {userState?.user && (
                     <div className="d-flex flex-column align-items-end">
                       <Avatar
                         nameProp={userState.user.name}
@@ -184,7 +182,7 @@ export default function Navbar() {
                 </div>
               </div>
               <div className="modal-body d-flex flex-column justify-content-start align-items-end">
-                {!userState.user && (
+                {!userState?.user && (
                   <ButtonLink
                     to="/login"
                     className={`btn border-0 shadow-none pe-0 ${
@@ -197,21 +195,21 @@ export default function Navbar() {
                   />
                 )}
 
-                {userState.user && (
+                {userState?.user && (
                   <>
                     {userState.user.role === "ROLE_ADMIN" && (
                       <Link
                         className="text-decoration-none btn pe-0"
-                        to="/administrator"
+                        href="/administrator"
                       >
                         <SPAN
                           className=""
-                          role="button"
+                          // role="button"
                           data-bs-toggle="modal"
                           data-bs-target="#navbarMenu"
                           aria-controls="navbarMenu"
                         >
-                          Crear producto
+                          <p>Crear producto</p>
                         </SPAN>
                       </Link>
                     )}
@@ -224,21 +222,22 @@ export default function Navbar() {
                     </div>
                     <Link
                       className="text-decoration-none btn pe-0"
-                      to={`/${userState.user.id}/bookings`}
+                      href={`/${userState.user.id}/bookings`}
                     >
                       <SPAN
-                        role="button"
+                        className=""
+                        // role="button"
                         data-bs-toggle="modal"
                         data-bs-target="#navbarMenu"
                         aria-controls="navbarMenu"
                       >
-                        Mis reservas
+                        <p>Mis reservas</p>
                       </SPAN>
                     </Link>
                   </>
                 )}
 
-                {!userState.user && (
+                {!userState?.user && (
                   <>
                     <div className="container p-0">
                       <hr
@@ -283,7 +282,7 @@ export default function Navbar() {
                     }`}
                   ></i>
                 </button>
-                {userState.user && (
+                {userState?.user && (
                   <span
                     className="mt-auto fw-semibold"
                     role="button"
