@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import Link from "next/link";
 // import { Link } from "react-router-dom";
-import Avatar from "../avatar";
+// import Avatar from "../avatar";
 import UserContext from "../../context/user-context";
 // import ThemeContext from "../../context/context-theme";
 import ButtonLink from "../button-link";
-import SPAN from "../common/span";
+// import SPAN from "../common/span";
 
 import styles from "./styles.module.scss";
 
