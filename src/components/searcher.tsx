@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { geCities } from "../api/city";
+import { geCities } from "../apiCalls/city";
 import { CalendarWithInput } from "./calendar";
 import SELECT from "./common/select";
 

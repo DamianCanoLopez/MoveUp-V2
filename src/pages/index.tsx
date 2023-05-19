@@ -1,12 +1,10 @@
 import Searcher from "@/components/searcher";
 import { useState, useEffect } from "react";
-import { getCities } from "@/api/city";
+import { getCities } from "@/apiCalls/city";
 
 export default function Main() {
   useEffect(() => {
-    getCities().then((data) => {
-      console.log({ data });
-    });
+    getCities();
   }, []);
 
   return (

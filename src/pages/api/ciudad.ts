@@ -23,7 +23,7 @@ export default async function handler(
   }
 }
 
-export async function getAllCiudad(req: NextApiRequest, res: NextApiResponse) {
+async function getAllCiudad(req: NextApiRequest, res: NextApiResponse) {
   try {
     const ciudad = await prisma.Ciudades.findMany();
     return res.status(200).json(ciudad);
