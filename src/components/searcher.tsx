@@ -3,20 +3,19 @@ import { useState, useEffect } from "react";
 import SELECT from "./common/select";
 import { getCities, Cities } from "../apiCalls/city";
 
-export const getServerSideProps = async () => {
-  const response = await getCities();
-  console.log(response);
+// export const getServerSideProps = async () => {
+//   const response = await getCities();
+//   console.log(response);
 
-  return { props: { response } };
-};
+//   return { props: { response } };
+// };
 
 interface Props {
   onSearch: (city: string, date: { start: string; end: string }) => void;
-  response?: Cities;
 }
 
 export default function Searcher(props: Props) {
-  const [dataCities, setDataCities] = useState<Cities[] | undefined>();
+  const [dataCities, setDataCities] = useState<Cities | undefined>();
 
   const [city, setCity] = useState("");
 
@@ -25,6 +24,13 @@ export default function Searcher(props: Props) {
     end: "",
   });
 
+  useEffect(() => {
+    getCities().then((data) => {
+      setDataCities(data);
+      console.log(data);
+    });
+  }, []);
+
   const cities = dataCities?.map((city) => {
     return (
       <option key={city.id} value={city.id}>
@@ -32,6 +38,8 @@ export default function Searcher(props: Props) {
       </option>
     );
   });
+
+  console.log({ cities });
 
   const clearInputs = () => {
     setDates({ start: "", end: "" });
@@ -60,7 +68,8 @@ export default function Searcher(props: Props) {
                   value={city}
                 >
                   <option value="">¿A dónde vamos a ir?</option>
-                  <p>{cities}</p>
+                  {/* <p>{cities}</p> */}
+                  {cities}
                 </SELECT>
               </div>
               <div className="col-sm-12 col-md-4">

@@ -5,7 +5,7 @@ interface Props {
   onChange: any;
   className?: string;
   value: string;
-  children: JSX.Element | React.ReactNode;
+  children: JSX.Element | JSX.Element[];
   props?: any;
 }
 
