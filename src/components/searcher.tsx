@@ -1,25 +1,29 @@
 import { useState, useEffect } from "react";
-import { geCities } from "../apiCalls/city";
 import { CalendarWithInput } from "./calendar";
 import SELECT from "./common/select";
+import { getCities, Cities } from "../apiCalls/city";
+
+export const getServerSideProps = async () => {
+  const response = await getCities();
+  console.log(response);
+
+  return { props: { response } };
+};
 
 interface Props {
-  onSearch: (city: "string", date: string) => void;
+  onSearch: (city: string, date: { start: string; end: string }) => void;
+  response?: Cities;
 }
 
-export default function Searcher({ onSearch }: Props) {
-  const [dataCities, setDataCities] = useState([]);
+export default function Searcher(props: Props) {
+  const [dataCities, setDataCities] = useState<Cities[] | undefined>();
+
   const [city, setCity] = useState("");
+
   const [dates, setDates] = useState({
     start: "",
     end: "",
   });
-
-  useEffect(() => {
-    geCities().then((data) => {
-      setDataCities(data);
-    });
-  }, []);
 
   const cities = dataCities?.map((city) => {
     return (
@@ -43,14 +47,14 @@ export default function Searcher({ onSearch }: Props) {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            onSearch(city, dates);
+            props.onSearch(city, dates);
           }}
         >
           <div className="container d-flex justify-content-center">
             <div className="justify-content-center input-group gap-3">
               <div className="col d-flex">
                 <SELECT
-                  onChange={(e) => {
+                  onChange={(e: any) => {
                     setCity(e.target.value);
                   }}
                   value={city}

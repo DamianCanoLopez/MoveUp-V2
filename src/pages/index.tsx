@@ -1,11 +1,11 @@
-import Searcher from "@/components/searcher";
+// import Searcher from "@/components/searcher";
 import { useState, useEffect } from "react";
-import { getCities } from "@/apiCalls/city";
+// import { getCities } from "@/apiCalls/city";
 
 export default function Main() {
-  useEffect(() => {
-    getCities();
-  }, []);
+  // useEffect(() => {
+  //   getCities();
+  // }, []);
 
   return (
     <div className="min-vh-100">
