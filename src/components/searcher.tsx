@@ -1,19 +1,22 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import type { Ciudades } from "@prisma/client";
 import { CalendarWithInput } from "./calendar";
 import SELECT from "./common/select";
 
 interface Props {
   cities: Ciudades[] | undefined;
-  onSearch: (city: string, date: { start: Date; end: Date }) => void;
+  onSearch: (
+    city: string,
+    date: { start: Date | undefined; end: Date | undefined }
+  ) => void;
 }
 
 export default function Searcher(props: Props) {
   const [city, setCity] = useState("");
 
   const [dates, setDates] = useState({
-    start: "",
-    end: "",
+    start: undefined,
+    end: undefined,
   });
 
   const cities = props?.cities?.map((city) => {
@@ -25,7 +28,7 @@ export default function Searcher(props: Props) {
   });
   //
   const clearInputs = () => {
-    setDates({ start: "", end: "" });
+    setDates({ start: undefined, end: undefined });
     setCity("");
   };
 
