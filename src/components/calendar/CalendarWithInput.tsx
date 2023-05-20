@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect, useContext } from "react";
 import { format, isValid, isAfter, isBefore } from "date-fns";
-//  import ThemeContext from "../../context/context-theme";
+import ThemeContext from "../../context/context-theme";
 import useWindowResize from "./useWindowResize";
-//  import theme from "./styles";
+import theme from "./styles";
 import {
   ChakraProvider,
   useDisclosure,
@@ -41,7 +41,7 @@ export default function MultipleCalendar({
   setDates,
   months = 2,
 }: Props) {
-  /*  const themeState = useContext(ThemeContext); */
+  const themeState = useContext(ThemeContext);
   const [values, setValues] = useState({
     start: "",
     end: "",
@@ -52,9 +52,9 @@ export default function MultipleCalendar({
   const sizes = useWindowResize();
   const numberOfMonths = sizes.width < 690 ? 1 : months;
 
-  // const initialRef = useRef(null);
+  const initialRef = useRef(null);
   const calendarRef = useRef(null);
-  // const startInputRef = useRef(null);
+  const startInputRef = useRef(null);
   const endInputRef = useRef(null);
 
   const handleSelectDate = (dates: any) => {
@@ -78,17 +78,17 @@ export default function MultipleCalendar({
     });
 
     if (target.name === "start" && match(target.value) && endInputRef.current) {
-      //endInputRef.current.focus();
+      endInputRef.current.focus();
     }
   };
 
-  // useOutsideClick({
-  //   ref: calendarRef,
-  //   handler: onClose,
-  //   enabled: isOpen,
-  // });
+  useOutsideClick({
+    ref: calendarRef,
+    handler: onClose,
+    enabled: isOpen,
+  });
 
-  /*   useEffect(() => {
+  useEffect(() => {
     if (match(values.start)) {
       const startDate = new Date(values.start);
       const isValidStartDate = isValid(startDate);
@@ -102,9 +102,9 @@ export default function MultipleCalendar({
       return setDates({ ...dates, start: startDate });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [values.start]); */
+  }, [values.start]);
 
-  /*  useEffect(() => {
+  useEffect(() => {
     if (match(values.end)) {
       const endDate = new Date(values.end);
       const isValidEndDate = isValid(endDate);
@@ -113,7 +113,7 @@ export default function MultipleCalendar({
       if (isValidEndDate && isBeforeStartDate) {
         setValues({ ...values, start: "" });
 
-        //   startInputRef.current?.focus();
+        startInputRef.current?.focus();
 
         return setDates({ start: undefined, end: endDate });
       }
@@ -122,25 +122,25 @@ export default function MultipleCalendar({
       return setDates({ ...dates, end: endDate });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [values.end]); */
+  }, [values.end]);
 
   // Limpia los inputs del calendar cuando se presoina  VER TODO en la página.
-  /*   useEffect(() => {
+  /*  useEffect(() => {
     if (dates.start === "" && dates.end === "") {
       setValues({ start: "", end: "" });
-    }
+    } 
   }, [dates]); */
 
   return (
-    <ChakraProvider theme={{}} resetCSS={false}>
+    <ChakraProvider theme={theme(themeState.theme)} resetCSS={false}>
       <>
         <Reset />
 
         <Popover
           placement="auto-start"
-          // isOpen={isOpen}
-          // onClose={onClose}
-          // initialFocusRef={initialRef}
+          isOpen={isOpen}
+          onClose={onClose}
+          initialFocusRef={initialRef}
           isLazy
         >
           <PopoverTrigger>
@@ -148,18 +148,18 @@ export default function MultipleCalendar({
               borderWidth={1}
               rounded="md"
               p={2}
-              // onClick={onOpen}
-              // ref={initialRef}
-              // bgColor={themeState.theme ? "#212529" : "white"}
-              // color={themeState.theme ? "white" : ""}
+              onClick={onOpen}
+              ref={initialRef}
+              bgColor={themeState.theme ? "#212529" : "white"}
+              color={themeState.theme ? "white" : ""}
             >
               <Input
                 variant="unstyled"
                 name="start"
                 placeholder={dateFormat}
                 value={values.start}
-                // onChange={handleInputChange}
-                // ref={startInputRef}
+                onChange={handleInputChange}
+                ref={startInputRef}
               />
               <Input
                 variant="unstyled"
