@@ -53,9 +53,9 @@ export default function MultipleCalendar({
   const numberOfMonths = sizes.width < 690 ? 1 : months;
 
   const initialRef = useRef(null);
-  const calendarRef = useRef(null);
-  const startInputRef = useRef(null);
-  const endInputRef = useRef(null);
+  const calendarRef = useRef<HTMLElement>(null);
+  const startInputRef = useRef<HTMLInputElement>(null);
+  const endInputRef = useRef<HTMLInputElement>(null);
 
   const handleSelectDate = (dates: any) => {
     setDates(dates);

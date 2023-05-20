@@ -5,7 +5,7 @@ import SELECT from "./common/select";
 
 interface Props {
   cities: Ciudades[] | undefined;
-  onSearch: (city: string, date: { start: string; end: string }) => void;
+  onSearch: (city: string, date: { start: Date; end: Date }) => void;
 }
 
 export default function Searcher(props: Props) {
