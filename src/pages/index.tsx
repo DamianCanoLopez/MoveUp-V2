@@ -28,11 +28,13 @@ export default function Main(props: Props) {
           const formatDate = "yyyy-MM-dd";
           console.log(date);
 
-          const start = isValid(date.start)
-            ? format(date.start, formatDate)
-            : "";
+          const start =
+            date.start && isValid(date.start)
+              ? format(date.start, formatDate)
+              : "";
 
-          // const end = isValid(date.end) ? format(date.end, formatDate) : "";
+          const end =
+            date.end && isValid(date.end) ? format(date.end, formatDate) : "";
 
           // getFilteredClasses(city, { start, end }).then((data) => {
           //   setData(data);
