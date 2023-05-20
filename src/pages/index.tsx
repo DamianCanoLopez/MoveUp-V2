@@ -1,14 +1,12 @@
-// import Searcher from "@/components/searcher";
-import { useState, useEffect } from "react";
 import prisma from "../../lib/prisma";
 import Searcher from "@/components/searcher";
-import { City } from "../apiCalls/city";
+import type { Ciudades } from "@prisma/client";
 
 export const getServerSideProps = async () => {
   let response;
 
   try {
-    response = await prisma.Ciudades.findMany();
+    response = await prisma.ciudades.findMany();
   } catch (e) {
     console.error(e);
   }
@@ -17,12 +15,10 @@ export const getServerSideProps = async () => {
 };
 
 interface Props {
-  response: City[] | undefined;
+  response: Ciudades[] | undefined;
 }
 
 export default function Main(props: Props) {
-  console.log(props.response);
-
   return (
     <div className="min-vh-100">
       {/* <Searcher
