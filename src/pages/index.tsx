@@ -1,12 +1,10 @@
 // import Searcher from "@/components/searcher";
 import { useState, useEffect } from "react";
-import { PrismaClient } from "@prisma/client";
+import prisma from "../../lib/prisma";
 import Searcher from "@/components/searcher";
 import { City } from "../apiCalls/city";
 
 export const getServerSideProps = async () => {
-  const prisma = new PrismaClient();
-
   let response;
 
   try {
