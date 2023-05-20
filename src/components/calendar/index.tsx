@@ -1,4 +1,4 @@
-import CalendarWithInput from './CalendarWithInput';
-import Calendar from './Calendar';
+import CalendarWithInput from "./CalendarWithInput";
+/* import Calendar from './Calendar'; */
 
-export { CalendarWithInput, Calendar };
+export { CalendarWithInput /* Calendar */ };
