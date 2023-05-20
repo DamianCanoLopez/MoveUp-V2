@@ -60,7 +60,7 @@ export default function Searcher(props: Props) {
                   value={city}
                 >
                   <option value="">¿A dónde vamos a ir?</option>
-                  {cities}
+                  <p>{cities}</p>
                 </SELECT>
               </div>
               <div className="col-sm-12 col-md-4">

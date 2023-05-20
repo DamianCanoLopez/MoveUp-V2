@@ -30,9 +30,9 @@ import Reset from "./reset";
 const dateFormat = "MM/dd/yyyy";
 
 interface Props {
-  dates: string;
-  setDates: () => any;
-  months: number;
+  dates: { start: string; end: string };
+  setDates?: any;
+  months?: number;
 }
 
 export default function MultipleCalendar({
