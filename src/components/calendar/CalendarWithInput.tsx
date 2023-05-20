@@ -15,17 +15,17 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import Reset from "./reset";
-// import {
-//   Calendar,
-//   CalendarControls,
-//   CalendarPrevButton,
-//   CalendarNextButton,
-//   CalendarMonth,
-//   CalendarMonths,
-//   CalendarMonthName,
-//   CalendarWeek,
-//   CalendarDays,
-// } from "@uselessdev/datepicker";
+import {
+  Calendar,
+  CalendarControls,
+  CalendarPrevButton,
+  CalendarNextButton,
+  CalendarMonth,
+  CalendarMonths,
+  CalendarMonthName,
+  CalendarWeek,
+  CalendarDays,
+} from "@uselessdev/datepicker";
 
 const dateFormat = "MM/dd/yyyy";
 
@@ -56,7 +56,7 @@ export default function MultipleCalendar({
   const startInputRef = useRef(null);
   const endInputRef = useRef(null);
 
-  const handleSelectDate = (dates) => {
+  const handleSelectDate = (dates: any) => {
     setDates(dates);
     setValues({
       start: isValid(dates.start) ? format(dates.start, dateFormat) : "",
@@ -68,9 +68,9 @@ export default function MultipleCalendar({
     }
   };
 
-  const match = (value) => value.match(/(\d{2})\/(\d{2})\/(\d{4})/);
+  const match = (value: string) => value.match(/(\d{2})\/(\d{2})\/(\d{4})/);
 
-  const handleInputChange = ({ target }) => {
+  const handleInputChange = ({ target }: { target: any }) => {
     setValues({
       ...values,
       [target.name]: target.value,

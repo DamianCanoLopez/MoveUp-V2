@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { CalendarWithInput } from "./calendar";
+// import { CalendarWithInput } from "./calendar";
 import SELECT from "./common/select";
 import { getCities, Cities } from "../apiCalls/city";
 
@@ -64,7 +64,7 @@ export default function Searcher(props: Props) {
                 </SELECT>
               </div>
               <div className="col-sm-12 col-md-4">
-                <CalendarWithInput dates={dates} setDates={setDates} />
+                {/* <CalendarWithInput dates={dates} setDates={setDates} /> */}
               </div>
               <div className="d-flex col-12 col-md-2">
                 <button type="submit" className="btn btn-primary w-100">

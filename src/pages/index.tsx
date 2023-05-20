@@ -1,15 +1,11 @@
 // import Searcher from "@/components/searcher";
 import { useState, useEffect } from "react";
-// import { getCities } from "@/apiCalls/city";
+import Searcher from "@/components/searcher";
 
 export default function Main() {
-  // useEffect(() => {
-  //   getCities();
-  // }, []);
-
   return (
     <div className="min-vh-100">
-      {/* <Searcher
+      <Searcher
         onSearch={(city, date) => {
           const formatDate = "yyyy-MM-dd";
 
@@ -25,7 +21,7 @@ export default function Main() {
 
           setTitle("Resultado de la búsqueda:");
         }}
-      /> */}
+      />
     </div>
   );
 }
