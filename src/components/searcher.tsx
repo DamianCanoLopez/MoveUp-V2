@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
+import type { Ciudades } from "@prisma/client";
 
 // import { CalendarWithInput } from "./calendar";
 import SELECT from "./common/select";
 
 interface Props {
-  onSearch: (city: string, date: { start: string; end: string }) => void;
+  cities: Ciudades[] | undefined;
+  onSearch?: (city: string, date: { start: string; end: string }) => void;
 }
 
 export default function Searcher(props: Props) {
-  const [dataCities, setDataCities] = useState<Cities[] | undefined>();
-
   const [city, setCity] = useState("");
 
   const [dates, setDates] = useState({
@@ -17,22 +17,13 @@ export default function Searcher(props: Props) {
     end: "",
   });
 
-  // useEffect(() => {
-  //   getCities().then((data) => {
-  //     setDataCities(data);
-  //     console.log(data);
-  //   });
-  // }, []);
-
-  const cities = dataCities?.map((city) => {
+  const cities = props?.cities?.map((city) => {
     return (
       <option key={city.id} value={city.id}>
         {city.nombreCiudad}
       </option>
     );
   });
-
-  console.log({ cities });
 
   const clearInputs = () => {
     setDates({ start: "", end: "" });
@@ -61,8 +52,7 @@ export default function Searcher(props: Props) {
                   value={city}
                 >
                   <option value="">¿A dónde vamos a ir?</option>
-                  {/* <p>{cities}</p> */}
-                  {cities}
+                  <>{cities}</>
                 </SELECT>
               </div>
               <div className="col-sm-12 col-md-4">
