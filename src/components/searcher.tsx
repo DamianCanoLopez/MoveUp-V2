@@ -1,21 +1,14 @@
 import { useState, useEffect } from "react";
+
 // import { CalendarWithInput } from "./calendar";
 import SELECT from "./common/select";
-import { getCities, Cities } from "../apiCalls/city";
-
-// export const getServerSideProps = async () => {
-//   const response = await getCities();
-//   console.log(response);
-
-//   return { props: { response } };
-// };
 
 interface Props {
   onSearch: (city: string, date: { start: string; end: string }) => void;
 }
 
 export default function Searcher(props: Props) {
-  const [dataCities, setDataCities] = useState<Cities | undefined>();
+  const [dataCities, setDataCities] = useState<Cities[] | undefined>();
 
   const [city, setCity] = useState("");
 
@@ -24,12 +17,12 @@ export default function Searcher(props: Props) {
     end: "",
   });
 
-  useEffect(() => {
-    getCities().then((data) => {
-      setDataCities(data);
-      console.log(data);
-    });
-  }, []);
+  // useEffect(() => {
+  //   getCities().then((data) => {
+  //     setDataCities(data);
+  //     console.log(data);
+  //   });
+  // }, []);
 
   const cities = dataCities?.map((city) => {
     return (
