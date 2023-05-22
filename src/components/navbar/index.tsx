@@ -11,6 +11,8 @@ export default function Navbar() {
   const userState = useContext(UserContext);
   const themeState = useContext(ThemeContext);
 
+  console.log({ themeState });
+
   return (
     <nav className="navbar navbar-dark navbar-expand-md bg-primary">
       <div className="container container-fluid">

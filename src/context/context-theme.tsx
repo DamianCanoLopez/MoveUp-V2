@@ -1,20 +1,21 @@
-import { createContext, useState } from "react";
+import { Dispatch, SetStateAction, createContext, useState } from "react";
 
-interface ThemeContextType {
+interface ThemeContext {
   theme: boolean;
-  setTheme?: any;
+  setTheme: Dispatch<SetStateAction<boolean>>;
 }
 
-// type ThemeContextType = true | false;
-
-const ThemeContext = createContext<any>(false);
+const ThemeContext = createContext<ThemeContext>({
+  theme: false,
+  setTheme: () => {},
+});
 
 interface Props {
   children: JSX.Element;
 }
 
 export const ThemeProvider = ({ children }: Props) => {
-  const [theme, setTheme] = useState<ThemeContextType>();
+  const [theme, setTheme] = useState<boolean>(false);
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
