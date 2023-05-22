@@ -25,7 +25,7 @@ export default async function handler(
 
 async function getAllCiudad(req: NextApiRequest, res: NextApiResponse) {
   try {
-    const ciudad = await prisma.Ciudades.findMany();
+    const ciudad = await prisma.ciudades.findMany();
     return res.status(200).json(ciudad);
   } catch (e) {
     res.status(500).json({ error: "Error al obtener los elementos" });
@@ -35,7 +35,7 @@ async function getAllCiudad(req: NextApiRequest, res: NextApiResponse) {
 async function createCiudad(req: NextApiRequest, res: NextApiResponse) {
   const body = req.body;
   try {
-    const newCiudad = await prisma.Ciudades.create({
+    const newCiudad = await prisma.ciudades.create({
       data: {
         nombreCiudad: body.nombreCiudad,
         url: body.url,
@@ -51,7 +51,7 @@ async function createCiudad(req: NextApiRequest, res: NextApiResponse) {
 async function editCiudad(req: NextApiRequest, res: NextApiResponse) {
   const { id, nombreCiudad, url } = req.body;
   try {
-    const updateCategoria = await prisma.Ciudades.update({
+    const updateCategoria = await prisma.ciudades.update({
       where: { id },
       data: { nombreCiudad, url },
     });
@@ -64,7 +64,7 @@ async function editCiudad(req: NextApiRequest, res: NextApiResponse) {
 async function deleteCiudad(req: NextApiRequest, res: NextApiResponse) {
   const { id } = req.body;
   try {
-    const deleteC = await prisma.Ciudades.delete({
+    const deleteC = await prisma.ciudades.delete({
       where: { id },
     });
     return res.status(200).json(deleteC);
