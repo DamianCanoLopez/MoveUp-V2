@@ -23,7 +23,7 @@ const UserContext = createContext<UserContext>({
 });
 
 export const UserProvider = (props: any) => {
-  const [user, setUser] = useState<User | undefined>();
+  const [user, setUser] = useState<UserContext["user"]>();
 
   function logOut(): void {
     setUser(undefined);
