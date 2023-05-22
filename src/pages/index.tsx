@@ -4,7 +4,7 @@ import Searcher from "@/components/searcher";
 import type { Ciudades } from "@prisma/client";
 
 export const getServerSideProps = async () => {
-  let response;
+  let response = null;
 
   try {
     response = await prisma.ciudades.findMany();
