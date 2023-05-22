@@ -1,16 +1,26 @@
-import { createContext, useState } from "react";
+import { Dispatch, SetStateAction, createContext, useState } from "react";
+
+interface UserContext {
+  user: User | undefined;
+  setUser: Dispatch<SetStateAction<User | undefined>>;
+  logOut: () => void;
+}
 
 interface User {
   id: number;
   name: string;
   lastName: string;
   email: string;
-  city: string;
+  city?: string;
   token: string;
   role: string;
 }
 
-const UserContext = createContext<any>(undefined);
+const UserContext = createContext<UserContext>({
+  user: undefined,
+  setUser: () => {},
+  logOut: () => {},
+});
 
 export const UserProvider = (props: any) => {
   const [user, setUser] = useState<User | undefined>();
