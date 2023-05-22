@@ -11,8 +11,6 @@ export default function Navbar() {
   const userState = useContext(UserContext);
   const themeState = useContext(ThemeContext);
 
-  console.log({ themeState });
-
   return (
     <nav className="navbar navbar-dark navbar-expand-md bg-primary">
       <div className="container container-fluid">
@@ -53,10 +51,12 @@ export default function Navbar() {
                 text="Iniciar Sesión"
               />
               <button
-                className={`bi min-width-theme btn border-0 text-white ${
+                // <i class="fa-sharp fa-solid fa-cloud-sun"></i>
+                // <i class="fa-solid fa-cloud-moon"></i>
+                className={` min-width-theme btn border-0 text-white ${
                   themeState?.theme
-                    ? "bi-cloud-sun-fill fs-3"
-                    : "bi-cloud-moon-fill fs-3"
+                    ? "fa-sharp fa-solid fa-cloud-sun fs-3"
+                    : "fa-solid fa-cloud-moon fs-3"
                 }`}
                 onClick={() => {
                   themeState.setTheme(!themeState.theme);

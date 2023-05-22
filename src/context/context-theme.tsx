@@ -11,7 +11,7 @@ const ThemeContext = createContext<ThemeContext>({
 });
 
 interface Props {
-  children: JSX.Element;
+  children: React.ReactNode;
 }
 
 export const ThemeProvider = ({ children }: Props) => {

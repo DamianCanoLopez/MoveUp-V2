@@ -16,7 +16,7 @@ export const UserProvider = (props: any) => {
   const [user, setUser] = useState<User | undefined>();
 
   function logOut(): void {
-    // setUser();
+    setUser(undefined);
   }
   return (
     <UserContext.Provider value={{ user, setUser, logOut }}>
