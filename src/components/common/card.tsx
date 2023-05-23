@@ -5,10 +5,10 @@ interface Props {
   className: string;
   role: string;
   children: React.ReactNode;
-  props?: any;
+  onClick?: () => void;
 }
 
-const Card = ({ className, role, children, ...props }: Props) => {
+const Card = ({ className, role, children, onClick }: Props) => {
   const themeState = useContext(ThemeContext);
 
   return (
@@ -16,7 +16,6 @@ const Card = ({ className, role, children, ...props }: Props) => {
       className={`card ${
         themeState.theme ? "border-secondary text-bg-dark" : ""
       } ${className}`}
-      {...props}
     >
       {children}
     </div>
