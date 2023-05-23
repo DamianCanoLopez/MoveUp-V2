@@ -1,14 +1,16 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import ThemeContext from "../../context/context-theme";
 
-const H5 = ({ className, children, ...props }) => {
+interface Props {
+  className: string;
+  children: React.ReactNode;
+}
+
+const H5 = ({ className, children }: Props) => {
   const themeState = useContext(ThemeContext);
 
   return (
-    <h5
-      className={`h5 ${themeState.theme ? "text-white" : ""} ${className}`}
-      {...props}
-    >
+    <h5 className={`h5 ${themeState.theme ? "text-white" : ""} ${className}`}>
       {children}
     </h5>
   );
