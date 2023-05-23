@@ -4,7 +4,7 @@ import { CalendarWithInput } from "./calendar";
 import SELECT from "./common/select";
 
 interface Props {
-  cities: Ciudades[] | undefined;
+  cities: Ciudades[] | null;
   onSearch: (
     city: string,
     date: { start: Date | undefined; end: Date | undefined }

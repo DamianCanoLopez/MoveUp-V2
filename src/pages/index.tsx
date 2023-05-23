@@ -1,29 +1,32 @@
 import prisma from "../../lib/prisma";
 import { format, isValid } from "date-fns";
 import Searcher from "@/components/searcher";
-import type { Ciudades } from "@prisma/client";
+import Categories from "@/components/categories";
+import type { Ciudades, Categorias } from "@prisma/client";
 
 export const getServerSideProps = async () => {
-  let response = null;
-
+  let cities = null;
+  let categories = null;
   try {
-    response = await prisma.ciudades.findMany();
+    cities = await prisma.ciudades.findMany();
+    categories = await prisma.categorias.findMany();
   } catch (e) {
     console.error(e);
   }
 
-  return { props: { response } };
+  return { props: { cities, categories } };
 };
 
 interface Props {
-  response: Ciudades[] | undefined;
+  cities: Ciudades[] | null;
+  categories: Categorias[] | null;
 }
 
 export default function Main(props: Props) {
   return (
     <div className="min-vh-100">
       <Searcher
-        cities={props.response}
+        cities={props.cities}
         onSearch={(city, date) => {
           const formatDate = "yyyy-MM-dd";
           console.log(date);
@@ -42,6 +45,13 @@ export default function Main(props: Props) {
 
           // setTitle("Resultado de la búsqueda:");
         }}
+      />
+      <Categories
+        categories={props.categories}
+        // onClickCategory={(data, categoryName) => {
+        //   setData(data);
+        //   setTitle("Filtrado por categoría: " + categoryName);
+        // }}
       />
     </div>
   );
