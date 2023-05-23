@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import ThemeContext from "../../context/context-theme";
 
 interface Props {
-  className: string;
+  className?: string;
   children: React.ReactNode;
 }
 

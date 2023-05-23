@@ -1,7 +1,13 @@
 import { useContext } from "react";
 import ThemeContext from "../../context/context-theme";
 
-const Card = ({ className, children, ...props }) => {
+interface Props {
+  className: string;
+  children: React.ReactNode;
+  props?: any;
+}
+
+const Card = ({ className, children, ...props }: Props) => {
   const themeState = useContext(ThemeContext);
 
   return (
